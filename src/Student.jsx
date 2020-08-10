@@ -35,7 +35,6 @@ function Student(props) {
   const dispatch = useDispatch();
   let student = props.student;
   const [grade, toggleGrade] = useState(true);
-
   const [tagName, setTagName] = useState("");
   const Average = (student) => {
     let convertInteger = student.map((e) => parseInt(e));
@@ -51,7 +50,8 @@ function Student(props) {
   };
   const submitAddTag = (event) => {
     event.preventDefault();
-
+    setTagName("");
+    console.log(tagName);
     dispatch({
       type: "ADD_TAG",
       currentStudent: student.firstName,
@@ -94,6 +94,7 @@ function Student(props) {
                   onChange={(e) => setTagName(e.target.value)}
                   className="add-tag-input"
                   placeholder="Add a tag"
+                  value={tagName}
                 ></input>
               </form>
             )}

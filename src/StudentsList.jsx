@@ -10,6 +10,8 @@ function StudentsList() {
   let visibleStudents = [];
   if (!query) {
     visibleStudents = students;
+  } else if (!tagQuery) {
+    visibleStudents = students;
   } else {
     visibleStudents = students.filter((student) => {
       return (
@@ -24,6 +26,7 @@ function StudentsList() {
   };
   const handleQueryTag = (event) => {
     event.preventDefault();
+    setTagQuery(event.target.value);
   };
 
   return (
