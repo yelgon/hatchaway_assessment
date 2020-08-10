@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import Student from "./Student.jsx";
+import StudentsList from "./StudentsList.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ function App() {
     fetchData();
   }, []);
 
-  return <Student />;
+  return <StudentsList />;
 }
 
 export default App;
