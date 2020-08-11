@@ -3,11 +3,14 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 
 const TagBox = styled.div`
-  background: gray;
+  border-radius: 10px;
+  color: #424746;
+  opacity: 0.7;
+  background: #bbcbc8;
   height: 25px;
   width: 70px;
   margin: 5px 2px 5px 2px;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
   text-align: center;
 `;

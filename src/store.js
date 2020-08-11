@@ -9,20 +9,18 @@ let reducer = (state, action) => {
         return { ...element, tags: [] };
       });
       return { ...state, students: newStudents };
+
     case "ADD_TAG":
-      let found = state.students.find(
-        (e) => (e.firstName = action.currentStudent)
-      );
-      const currentTags = [...found.tags, action.addedTag];
-      const tagStudentsUpdated = state.students.map((e) => {
-        if (e.firstName === action.currentStudent) {
-          e.tags = currentTags;
-        }
-        return e;
-      });
       return {
         ...state,
-        students: tagStudentsUpdated,
+        students: state.students.map((e) =>
+          e.firstName === action.currentStudent
+            ? {
+                ...e,
+                tags: e.tags.concat(action.addedTag),
+              }
+            : e
+        ),
       };
 
     default:
