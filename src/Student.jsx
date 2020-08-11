@@ -51,7 +51,7 @@ function Student(props) {
   const submitAddTag = (event) => {
     event.preventDefault();
     setTagName("");
-    console.log(tagName);
+
     dispatch({
       type: "ADD_TAG",
       currentStudent: student.firstName,

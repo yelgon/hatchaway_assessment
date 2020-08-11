@@ -5,20 +5,23 @@ import Student from "./Student.jsx";
 function StudentsList() {
   const [query, setQuery] = useState("");
   const [tagQuery, setTagQuery] = useState("");
+  const [tagQuerySubmit, setTagQuerySubmit] = useState("");
   const students = useSelector((st) => st.students);
-  console.log(students);
+
   let visibleStudents = [];
-  if (!query) {
-    visibleStudents = students;
-  } else if (!tagQuery) {
-    visibleStudents = students;
-  } else {
+  if (query) {
     visibleStudents = students.filter((student) => {
       return (
         student.firstName.toLowerCase().includes(query) ||
         student.lastName.toLowerCase().includes(query)
       );
     });
+  } else if (tagQuerySubmit) {
+    visibleStudents = students.filter((student) => {
+      return student.tags.find((e) => e === tagQuerySubmit);
+    });
+  } else {
+    visibleStudents = students;
   }
 
   const handleQuery = (event) => {
@@ -26,7 +29,7 @@ function StudentsList() {
   };
   const handleQueryTag = (event) => {
     event.preventDefault();
-    setTagQuery(event.target.value);
+    setTagQuerySubmit(tagQuery);
   };
 
   return (
